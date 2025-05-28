@@ -24,13 +24,14 @@ spring:
 
 eureka:
   client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
+    serviceUrl:
       defaultZone: https://eureka-server-h6c0.onrender.com/eureka/
-    lease-renewal-interval-in-seconds: 5
-    registry-fetch-interval-seconds: 5
+    registerWithEureka: true
+    fetchRegistry: true
+    leaseRenewalIntervalInSeconds: 5
+    registryFetchIntervalSeconds: 5
 
   instance:
-    prefer-ip-address: true
-    instance-id: ${spring.application.name}:${random.value}
+    preferIpAddress: true
+    instanceId: book-service
+    leaseExpirationDurationInSeconds: 15
