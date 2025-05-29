@@ -2,42 +2,46 @@ package com.example.mofe.bookservice.service;
 
 import com.example.mofe.bookservice.model.Book;
 import com.example.mofe.bookservice.repository.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BookService {
-    private final BookRepository repository;
 
-    public BookService(BookRepository repository) {
-        this.repository = repository;
+    @Autowired
+    private BookRepository bookRepository;
+
+    // Get all books
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
     }
 
-    public Book save(Book book) {
-        return repository.save(book);
+    // Get a single book by ID
+    public Book getBookById(Integer bookId) {
+        return bookRepository.findById(bookId)
+                .orElseThrow(() -> new RuntimeException("Book not found with id " + bookId));
     }
 
-    public List<Book> findAll() {
-        return repository.findAll();
+    // Create a new book
+    public Book createBook(Book book) {
+        return bookRepository.save(book);
     }
 
-    public Optional<Book> findById(Integer id) {
-        return repository.findById(id);
-    }
-
-    public Book updateBook(Integer id, Book bookDetails) {
-        Book book = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Book not found with id " + id));
+    // Update an existing book
+    public Book updateBook(Integer bookId, Book bookDetails) {
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new RuntimeException("Book not found with id " + bookId));
 
         book.setName(bookDetails.getName());
         book.setWeight(bookDetails.getWeight());
 
-        return repository.save(book);
+        return bookRepository.save(book);
     }
 
-    public void deleteById(Integer id) {
-        repository.deleteById(id);
+    // Delete a book by ID
+    public void deleteBook(Integer bookId) {
+        bookRepository.deleteById(bookId);
     }
 }
