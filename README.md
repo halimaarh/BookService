@@ -2,15 +2,15 @@
 Base URL: https://bookservice-a2qm.onrender.com/api/v1/books
 
 🔹 Get All Books
-GET /books
+GET /books/
 
 Description: Returns a list of all books.
 
 🔹 Get Book by ID
-GET /books/{id}
+GET /books/{bookId}
 
 🔹 Delete Book by ID
-DELETE /books/{id}
+DELETE /books/{bookId}
 
 🔹 Create a Book
 POST /books
@@ -24,7 +24,7 @@ Copy code
   "weight": "0.45kg"
 }
 🔹 Update a Book
-PUT /books/{id}
+PUT /books/{bookId}
 
 Request Body:
 
