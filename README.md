@@ -1,33 +1,21 @@
-📚 Book Service API
+📘 Book Service
 Base URL: https://bookservice-a2qm.onrender.com/api/v1/books
 
-📘 Get All Books
-Method: GET
+🔹 Get All Books
+GET /books
 
-Endpoint: /books
+Description: Returns a list of all books.
 
-Description: Retrieves a list of all books.
+🔹 Get Book by ID
+GET /books/{id}
 
-🔍 Get Book by ID
-Method: GET
+🔹 Delete Book by ID
+DELETE /books/{id}
 
-Endpoint: /books/{id}
+🔹 Create a Book
+POST /books
 
-Description: Retrieves a book by its unique ID.
-
-❌ Delete Book by ID
-Method: DELETE
-
-Endpoint: /books/{id}
-
-Description: Deletes a book by its ID.
-
-➕ Create a New Book
-Method: POST
-
-Endpoint: /books
-
-Body (JSON):
+Request Body:
 
 json
 Copy code
@@ -35,16 +23,14 @@ Copy code
   "name": "Book Title",
   "weight": "0.45kg"
 }
-✏️ Update Book by ID
-Method: PUT
+🔹 Update a Book
+PUT /books/{id}
 
-Endpoint: /books/{id}
-
-Body (JSON):
+Request Body:
 
 json
 Copy code
 {
-  "name": "Updated Book Title",
+  "name": "Updated Title",
   "weight": "0.50kg"
 }
